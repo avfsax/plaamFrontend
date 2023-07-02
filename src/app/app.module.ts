@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './Auth/auth.module';
-import { MainComponent } from './main.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainComponent } from './Components/MainComponent/main.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MainComponent } from './main.component';
     AuthModule.forRoot({
       loginPath: "/api/login_check",
       defaultRoute: [""]
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
