@@ -1,0 +1,71 @@
+<div class="loginComponent">
+  <div class="boxLogin" fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
+    <form (ngSubmit)="login()" class="login-form" [@shake]="shakeState">
+      <div fxLayout="column" fxLayoutAlign="center center" class="form-group boxImgLogin">
+        <img class="login-logo" />
+      </div>
+
+      <div fxLayout="column" class="form-group has-feedback has-feedback-left">
+        <input
+          id="username"
+          [(ngModel)]="credentials.username"
+          #username="ngModel"
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          name="username"
+          required="required"
+          aria-required="true"
+        />
+        <div class="form-control-feedback">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div
+          [hidden]="username.valid || username.pristine"
+          for="username"
+          class="validation-error-label"
+        >
+          Username is required
+        </div>
+      </div>
+
+      <div fxLayout="column" class="form-group has-feedback has-feedback-left">
+        <div fxLayoutWrap>
+          <input
+            [(ngModel)]="credentials.password"
+            #password="ngModel"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            name="password"
+            required="required"
+            aria-required="true"
+            aria-invalid="true"
+          />
+          <div class="form-control-feedback">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div
+          [hidden]="password.valid || password.pristine"
+          for="password"
+          class="validation-error-label"
+        >
+          Password is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="login-btn" type="submit">
+          <ng-container>Login </ng-container>
+          <i
+            class="fa"
+            [ngClass]="{ 'fa-refresh fa-spin': isBusy, 'fa-sign-in': !isBusy }"
+            style="margin-left: 5px"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
