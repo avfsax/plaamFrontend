@@ -33,13 +33,11 @@ export class MainComponent implements OnInit {
     this.user = { id: 0, email: '' };
 
     this.authenticationService.logout(true);
+    this.showmenu = false;
   }
 
   login(): void {
     this.router.navigate(['login']);
-  }
-
-  goToNews() {
-    this.router.navigate(['news']);
+    this.showmenu = false;
   }
 }
