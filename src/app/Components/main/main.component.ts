@@ -17,13 +17,9 @@ export class MainComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
-  ) {
-    this.reloadUser();
-  }
+  ) {}
 
-  ngOnInit(): void {
-    this.reloadUser();
-  }
+  ngOnInit(): void {}
 
   reloadUser() {
     this.authenticationService.getCurrentUser().then((response) => {
@@ -33,5 +29,9 @@ export class MainComponent implements OnInit {
 
   logout(): void {
     this.authenticationService.logout(false);
+  }
+
+  goToNews() {
+    this.router.navigate(['news']);
   }
 }

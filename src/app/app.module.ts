@@ -1,27 +1,40 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './Auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainComponent } from './Components/MainComponent/main.component';
+import { MainComponent } from './Components/main/main.component';
+import { NewsComponent } from './Components/news/news-component.component';
+import { TextLongPipe } from './Pipes/text-long.pipe';
+import { BoxNewsComponent } from './Components/news/box-news/box-news.component';
+import { ShowNewsComponent } from './Components/news/show-news/show-news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
+    NewsComponent,
+    TextLongPipe,
+    BoxNewsComponent,
+    ShowNewsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule.forRoot({
-      loginPath: "/api/login_check",
-      defaultRoute: [""]
+      loginPath: '/api/login_check',
+      defaultRoute: [''],
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
