@@ -109,7 +109,7 @@ export class AuthenticationService {
       this.toRouteAfterLogin = [this.router.url];
     }
 
-    // this.router.navigate([""]);
+    this.router.navigate([""]);
   }
 
   showLogin(commands: any[]): void {
