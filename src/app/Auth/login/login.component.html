@@ -1,5 +1,5 @@
 <div class="loginComponent">
-  <div class="boxLogin" >
+  <div class="boxLogin">
     <form (ngSubmit)="login()" class="login-form">
       <div class="form-group boxImgLogin">
         <img class="login-logo" />
@@ -17,9 +17,6 @@
           required="required"
           aria-required="true"
         />
-        <div class="form-control-feedback">
-          <i class="fa fa-user" aria-hidden="true"></i>
-        </div>
         <div
           [hidden]="username.valid || username.pristine"
           for="username"
@@ -29,7 +26,7 @@
         </div>
       </div>
 
-      <div  class="form-group has-feedback has-feedback-left">
+      <div class="form-group has-feedback has-feedback-left">
         <div>
           <input
             [(ngModel)]="credentials.password"
@@ -42,9 +39,6 @@
             aria-required="true"
             aria-invalid="true"
           />
-          <div class="form-control-feedback">
-            <i class="fa fa-lock" aria-hidden="true"></i>
-          </div>
         </div>
         <div
           [hidden]="password.valid || password.pristine"
@@ -58,12 +52,6 @@
       <div class="form-group">
         <button class="login-btn" type="submit">
           <ng-container>Login </ng-container>
-          <i
-            class="fa"
-            [ngClass]="{ 'fa-refresh fa-spin': isBusy, 'fa-sign-in': !isBusy }"
-            style="margin-left: 5px"
-            aria-hidden="true"
-          ></i>
         </button>
       </div>
     </form>

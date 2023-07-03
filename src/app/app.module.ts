@@ -3,6 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +23,7 @@ import { ShowNewsComponent } from './Components/news/show-news/show-news.compone
 import { PostsComponent } from './Components/posts/posts.component';
 import { PostBoxComponent } from './Components/posts/post-box/post-box.component';
 import { ShowPostComponent } from './Components/posts/show-post/show-post.component';
+import { CreateCommentComponent } from './Components/posts/create-comment/create-comment.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +36,7 @@ import { ShowPostComponent } from './Components/posts/show-post/show-post.compon
     PostsComponent,
     PostBoxComponent,
     ShowPostComponent,
+    CreateCommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +48,13 @@ import { ShowPostComponent } from './Components/posts/show-post/show-post.compon
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatIconModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

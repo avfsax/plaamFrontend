@@ -8,12 +8,40 @@
 
   <div [innerHTML]="post.text" class="contentShow"></div>
 
-  <div class="commentsOfPost">
-    <h2 class="commentsTitle">Comentarios: </h2>
-    <p class="notComments" *ngIf="!post.comments">There are currently no comments for this post</p>
-    <div class="commentMessage" *ngFor="let comment of post.comments">
-        <p>{{ comment.message }}</p>
+  <div class="row">
+    <div class="col">
+      <h2 class="commentsTitle">Comentarios:</h2>
     </div>
+    <div class="col-2">
+      <div class="rowBtnComment">
+        <button mat-raised-button color="accent" (click)="createComment(post)">
+          New comment
+        </button>
+      </div>
+    </div>
+  </div>
 
+  <div
+    class="commentsOfPost"
+    [matBadge]="post.comments?.length"
+    matBadgePosition="before"
+    matBadgeColor="primary"
+    matBadgeSize="large"
+  >
+    <p class="notComments" *ngIf="!(post.comments && post.comments.length > 0)">
+      There are currently no comments for this post
+    </p>
+
+    <div class="commentMessage" *ngFor="let comment of post.comments">
+      <mat-card class="cardComment">
+        <mat-card-content>
+          <p class="dateComment">
+            {{ comment.createdDate | date : "dd/MM/yyyy hh:mm" }}
+            <span *ngIf="post.author">by {{ post.author.email }}</span>
+          </p>
+          <p class="msgComment">{{ comment.message }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { NewsComponent } from './Components/news/news-component.component';
 import { ShowNewsComponent } from './Components/news/show-news/show-news.component';
 import { PostsComponent } from './Components/posts/posts.component';
 import { ShowPostComponent } from './Components/posts/show-post/show-post.component';
+import { CreateCommentComponent } from './Components/posts/create-comment/create-comment.component';
 
 const routes: Routes = [
   {
@@ -24,11 +25,14 @@ const routes: Routes = [
       {
         path: 'posts',
         component: PostsComponent,
-        canActivate: [AuthGuardService],
       },
       {
         path: 'posts/:id',
         component: ShowPostComponent,
+      },
+      {
+        path: 'posts/:id/comments',
+        component: CreateCommentComponent,
         canActivate: [AuthGuardService],
       },
     ],

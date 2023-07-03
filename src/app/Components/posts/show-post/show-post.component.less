@@ -13,6 +13,7 @@
     width: 100%;
     margin-bottom: 40px;
   }
+
   .contentShow {
     display: block;
     margin-block-start: 1em;
@@ -24,6 +25,8 @@
 
     font-size: 1.25rem;
     line-height: 160%;
+
+    padding-bottom: 30px;
   }
 
   .dateShow {
@@ -32,28 +35,53 @@
     text-align: right;
   }
 
+  .rowBtnComment {
+    text-align: right;
+    font-size: 1.25rem;
+  }
+
+  .commentsTitle {
+    color: darkblue;
+    font-size: 1.25rem;
+  }
+
   .commentsOfPost {
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 20px;
 
-    border: solid 1px black;
+    border: solid 1px lightgray;
     border-radius: 10px;
 
-    .commentsTitle{
-        color: darkblue;
-        font-size: 1.5rem;
-    }
-
-    .notComments{
-        color: darkred;
-        text-align: center;
-        font-size: 1.5rem;
+    .notComments {
+      color: darkred;
+      text-align: center;
+      font-size: 1.25rem;
+      padding-top: 20px;
+      padding-bottom: 15px;
     }
 
     .commentMessage {
-        font-size: 1.5rem;
-        border-bottom: solid 1px grey;
+      padding-bottom: 20px;
 
+      .cardComment {
+        background-color: white;
+      }
+
+      .msgComment {
+        font-size: 1.25rem;
+      }
+
+      .dateComment {
+        width: 100%;
+        color: grey;
+        text-align: right;
+      }
     }
   }
+}
+
+.mat-badge-large .mat-badge-content {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
 }
