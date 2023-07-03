@@ -10,6 +10,7 @@ import { NewsService } from 'src/app/Services/news.service';
 })
 export class ShowNewsComponent implements OnInit {
   isLoading: boolean = true;
+
   news: News = {
     id: 0,
     title: '',
@@ -19,8 +20,6 @@ export class ShowNewsComponent implements OnInit {
     publishedDate: new Date(),
   };
 
-  id: number = 0;
-
   constructor(
     private newsService: NewsService,
     private route: ActivatedRoute
@@ -28,13 +27,13 @@ export class ShowNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
+      let id: number = +params['id']; // (+) converts string 'id' to a number
 
-      this.getNews(this.id);
+      this.readNews(id);
     });
   }
 
-  getNews(id: number) {
+  readNews(id: number) {
     this.newsService
       .getOne(id)
       .then((response) => {

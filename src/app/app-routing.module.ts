@@ -13,7 +13,7 @@ const routes: Routes = [
     path: '',
     component: MainComponent,
     children: [
-      { path: '', component: NewsComponent},
+      { path: '', component: NewsComponent },
       {
         path: 'news',
         component: NewsComponent,

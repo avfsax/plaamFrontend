@@ -1,28 +1,30 @@
-<div class="createNewComment">
-  <h1 class="title">
-    Create new comment to post <b>"{{ post.title }}"</b>
-  </h1>
-  <form>
-    <mat-form-field>
-      <mat-label>Message</mat-label>
-      <textarea
-        [formControl]="msg"
-        matInput
-        cdkTextareaAutosize
-        cdkAutosizeMinRows="5"
-        cdkAutosizeMaxRows="15"
-      ></textarea>
-    </mat-form-field>
-  </form>
+<div class="row">
+  <div class="col createNewComment">
+    <h1 class="title">
+      Create new comment to post <b>"{{ post.title }}"</b>
+    </h1>
+    <form>
+      <mat-form-field>
+        <mat-label>Message</mat-label>
+        <textarea
+          [formControl]="msg"
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="5"
+          cdkAutosizeMaxRows="15"
+        ></textarea>
+      </mat-form-field>
+    </form>
 
-  <div class="rowBtnCreate">
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="createComment()"
-      [disabled]="msg.invalid"
-    >
-      Save
-    </button>
+    <div class="rowBtnCreate">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createComment()"
+        [disabled]="msg.invalid"
+      >
+        Save
+      </button>
+    </div>
   </div>
 </div>

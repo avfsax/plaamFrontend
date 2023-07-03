@@ -1,7 +1,15 @@
-<div class="listOfPosts">
-  <div class="row">
-    <div class="col-xl-3 col-md-4 col-sm-6 col" *ngFor="let p of posts">
-      <app-post-box [post]="p"></app-post-box>
+<div class="row" *ngIf="isLoading">
+  <div class="col">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border spinnerBigSize text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-3 col-md-4 col-sm-6 col" *ngFor="let p of posts">
+    <app-post-box [post]="p"></app-post-box>
   </div>
 </div>

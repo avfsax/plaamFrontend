@@ -1,5 +1,7 @@
 .showPost {
   padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   .titleShow {
     font-size: 2.75rem;
@@ -9,9 +11,10 @@
     margin-top: 20px;
   }
 
-  .imgShow {
+  .dateShow {
     width: 100%;
-    margin-bottom: 40px;
+    color: grey;
+    text-align: right;
   }
 
   .contentShow {
@@ -29,19 +32,13 @@
     padding-bottom: 30px;
   }
 
-  .dateShow {
-    width: 100%;
-    color: grey;
-    text-align: right;
-  }
-
-  .rowBtnComment {
-    text-align: right;
+  .commentsHeader {
+    color: darkblue;
     font-size: 1.25rem;
   }
 
-  .commentsTitle {
-    color: darkblue;
+  .btnAddComment {
+    text-align: right;
     font-size: 1.25rem;
   }
 
@@ -60,21 +57,17 @@
       padding-bottom: 15px;
     }
 
-    .commentMessage {
-      padding-bottom: 20px;
-
-      .cardComment {
-        background-color: white;
-      }
-
-      .msgComment {
-        font-size: 1.25rem;
-      }
+    .cardComment {
+      margin-bottom: 20px;
+      background-color: white;
 
       .dateComment {
         width: 100%;
         color: grey;
         text-align: right;
+      }
+      .msgComment {
+        font-size: 1.25rem;
       }
     }
   }

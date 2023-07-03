@@ -20,7 +20,6 @@ export class CreateCommentComponent {
     publishedDate: new Date(),
   };
 
-  id: number = 0;
   msg = new FormControl('', [Validators.required, Validators.minLength(5)]);
 
   constructor(
@@ -32,13 +31,13 @@ export class CreateCommentComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = +params['id'];
+      let id: number = +params['id'];
 
-      this.getPost(this.id);
+      this.readPost(id);
     });
   }
 
-  getPost(id: number) {
+  readPost(id: number) {
     this.postsService
       .getOne(id)
       .then((response) => {
@@ -51,7 +50,7 @@ export class CreateCommentComponent {
 
   createComment() {
     console.log(this.msg);
-    if (this.post.id > 0) {
+    if (this.post.id > 0 && this.msg.valid) {
       this.commentsService
         .save(this.post.id, this.msg.value ? this.msg.value : '')
         .then((response) => {

@@ -1,11 +1,18 @@
-<div class="showNews">
-  <h1 class="titleShow">{{ news.title }}</h1>
+<div class="row showNews">
+  <div class="col">
+    <h1 class="titleShow">{{ news.title }}</h1>
 
-  <h4 class="dateShow">
-    {{ news.publishedDate | date : "dd/MM/yyyy hh:mm" }}
-  </h4>
+    <h4 class="dateShow">
+      {{ news.publishedDate | date : "dd/MM/yyyy hh:mm" }}
+    </h4>
 
-  <img mat-card-image [src]="news.imgUrl" [alt]="news.imgUrl" class="imgShow" />
+    <img
+      mat-card-image
+      [src]="news.imgUrl"
+      [alt]="news.imgUrl"
+      class="imgShow"
+    />
 
-  <div [innerHTML]="news.text" class="contentShow"></div>
+    <div [innerHTML]="news.text" class="contentShow"></div>
+  </div>
 </div>

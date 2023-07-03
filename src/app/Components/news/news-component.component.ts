@@ -15,10 +15,10 @@ export class NewsComponent implements OnInit {
   constructor(private newsService: NewsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.refreshNews();
+    this.readNews();
   }
 
-  refreshNews() {
+  readNews() {
     this.newsService
       .getAll()
       .then((response) => {

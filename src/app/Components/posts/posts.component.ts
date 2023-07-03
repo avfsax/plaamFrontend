@@ -15,10 +15,10 @@ export class PostsComponent {
   constructor(private postsService: PostsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.refreshPosts();
+    this.readPosts();
   }
 
-  refreshPosts() {
+  readPosts() {
     this.postsService
       .getAll()
       .then((response) => {

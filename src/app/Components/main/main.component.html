@@ -28,6 +28,7 @@
           aria-current="page"
           [routerLink]="['news']"
           [routerLinkActive]="['active']"
+          (click)="showmenu = false"
           >News</a
         >
         <a
@@ -35,6 +36,7 @@
           aria-current="page"
           [routerLink]="['posts']"
           [routerLinkActive]="['active']"
+          (click)="showmenu = false"
           >Posts</a
         >
       </div>

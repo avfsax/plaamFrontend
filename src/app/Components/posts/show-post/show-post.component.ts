@@ -10,6 +10,7 @@ import { PostsService } from 'src/app/Services/posts.service';
 })
 export class ShowPostComponent {
   isLoading: boolean = true;
+
   post: Post = {
     id: 0,
     title: '',
@@ -17,8 +18,6 @@ export class ShowPostComponent {
     createdDate: new Date(),
     publishedDate: new Date(),
   };
-
-  id: number = 0;
 
   constructor(
     private postsService: PostsService,
@@ -28,9 +27,9 @@ export class ShowPostComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = +params['id'];
+      let id: number = +params['id'];
 
-      this.getPost(this.id);
+      this.getPost(id);
     });
   }
 
@@ -46,6 +45,6 @@ export class ShowPostComponent {
   }
 
   createComment(post: Post) {
-    this.router.navigate(['posts/:id/comments', { id: post.id }]);
+    this.router.navigate(['posts', post.id, 'comments']);
   }
 }

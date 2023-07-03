@@ -1,7 +1,15 @@
-<div class="listOfNews">
-  <div class="row">
-    <div class="col-xl-3 col-md-4 col-sm-6 col" *ngFor="let n of news">
-      <box-news [news]="n"></box-news>
+<div class="row" *ngIf="isLoading">
+  <div class="col">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border spinnerBigSize text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="row listOfNews">
+  <div class="col-xl-3 col-md-4 col-sm-6 col" *ngFor="let n of news">
+    <box-news [news]="n"></box-news>
   </div>
 </div>
