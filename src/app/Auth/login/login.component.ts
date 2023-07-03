@@ -1,36 +1,43 @@
 import { Component } from '@angular/core';
-import { Router } from "@angular/router";
-import { AuthenticationService } from "../authentication.service";
-import { animate, keyframes, state, style, transition, trigger } from "@angular/animations";
-import { Credential } from "../credential";
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import {
+  animate,
+  keyframes,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { Credential } from '../credential';
 
 @Component({
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  styleUrls: ['./login.component.less'],
 })
-
 export class LoginComponent {
-
   credentials = {
     username: '',
-    password: ''
+    password: '',
   };
 
   invalidLogin = false;
 
-  constructor( private router: Router, private loginService: AuthenticationService) {
-  }
+  constructor(
+    private router: Router,
+    private loginService: AuthenticationService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login(): void {
-    let credential = new Credential(this.credentials.username, this.credentials.password);
-    this.loginService.authenticate(credential)
-      .then(response => {
-      })
-      .catch(error => {
-      });
+    let credential = new Credential(
+      this.credentials.username,
+      this.credentials.password
+    );
+    this.loginService
+      .authenticate(credential)
+      .then((response) => {})
+      .catch((error) => {});
   }
-
 }

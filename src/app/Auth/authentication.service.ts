@@ -1,62 +1,69 @@
 import { Injectable, Optional } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
-import { interval as observableInterval, Unsubscribable as AnonymousSubscription, UnsubscriptionError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import {
+  interval as observableInterval,
+  Unsubscribable as AnonymousSubscription,
+  UnsubscriptionError,
+} from 'rxjs';
 import { Credential } from './credential';
 
 export class AuthenticationServiceConfig {
-  loginPath = "api/login";
-  defaultRoute = ["main"];
+  loginPath = 'api/login';
+  defaultRoute = ['main'];
 }
 
 @Injectable()
 export class AuthenticationService {
-  private loginPath: string = "";
+  private loginPath: string = '';
   private _isLogged = false;
   private interval: AnonymousSubscription;
-  private token: string = "";
+  private token: string = '';
   private toRouteAfterLogin: any[] = [];
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    @Optional() config: AuthenticationServiceConfig) {
+    @Optional() config: AuthenticationServiceConfig
+  ) {
     if (config) {
       this.loginPath = config.loginPath;
-      if (sessionStorage.getItem("auth_token")) {
+      if (sessionStorage.getItem('auth_token')) {
         this._isLogged = true;
-        let auth_token = sessionStorage.getItem("auth_token");
+        let auth_token = sessionStorage.getItem('auth_token');
         if (auth_token) this.token = auth_token;
         this.setTokenCheckInterval();
       }
     }
-    this.interval = observableInterval(1).subscribe(() => { });
-
+    this.interval = observableInterval(1).subscribe(() => {});
   }
 
   private setTokenCheckInterval(): void {
-    this.interval = observableInterval(10000)
-      .subscribe(() => {
-        let token = sessionStorage.getItem("auth_token");
-        if (!token) {
-          this.logout(false);
-        } else if (this.token != token) {
-          location.reload();
-        }
-      });
+    this.interval = observableInterval(10000).subscribe(() => {
+      let token = sessionStorage.getItem('auth_token');
+      if (!token) {
+        this.logout(false);
+      } else if (this.token != token) {
+        location.reload();
+      }
+    });
   }
 
   private clearTokenCheckInterval(): void {
     if (this.interval) {
-      this.interval.unsubscribe()
+      this.interval.unsubscribe();
     }
   }
 
   authenticate(credentials: Credential): Promise<any> {
-    return this.http.post(this.loginPath, { username: credentials.username, password: credentials.password }).
-      toPromise().
-      then((response: any) => this.successHandler(response)).
-      catch(error => this.errorHandler(error));
+    return this.http
+      .post(this.loginPath, {
+        username: credentials.username,
+        password: credentials.password,
+      })
+      .toPromise()
+      .then((response: any) => this.successHandler(response))
+      .catch((error) => this.errorHandler(error));
   }
 
   isLogged(): boolean {
@@ -69,12 +76,11 @@ export class AuthenticationService {
     let token = this.parseJwt(data.token);
 
     this.token = data.token;
-    sessionStorage.setItem("auth_token", data.token);
-    sessionStorage.setItem("user_id", data.user_id);
-
+    sessionStorage.setItem('auth_token', data.token);
+    sessionStorage.setItem('user_id', data.user_id);
 
     this.setTokenCheckInterval();
-    this.router.navigate([""]);
+    this.router.navigate(['']);
 
     return response;
   }
@@ -88,54 +94,57 @@ export class AuthenticationService {
     let base64Url = token.split('.')[1];
     let base64 = base64Url.replace('-', '+').replace('_', '/');
     return JSON.parse(window.atob(base64));
-  };
+  }
 
   logout(expiredSession: boolean): void {
     this.clearTokenCheckInterval();
     if (this._isLogged) {
       this._isLogged = false;
-      this.token = "";
+      this.token = '';
       this.toRouteAfterLogin = [];
       sessionStorage.removeItem('auth_token');
       sessionStorage.removeItem('user_id');
     }
-    if (expiredSession) { this.toRouteAfterLogin = [this.router.url]; }
+    if (expiredSession) {
+      this.toRouteAfterLogin = [this.router.url];
+    }
 
-    this.router.navigate(["login"]);
+    // this.router.navigate([""]);
   }
 
   showLogin(commands: any[]): void {
     this.toRouteAfterLogin = commands;
-    this.router.navigate(["login"]);
+    this.router.navigate(['login']);
   }
 
   getUserName(): string {
-    return this.getTokenField("sub")
+    return this.getTokenField('sub');
   }
 
   getUserID(): string {
-    let user_id = sessionStorage.getItem("user_id")
+    let user_id = sessionStorage.getItem('user_id');
     if (user_id) {
       return user_id;
     } else {
-      return "";
+      return '';
     }
   }
 
   private getTokenField(fieldName: string): any {
-    let raw = sessionStorage.getItem("auth_token");
+    let raw = sessionStorage.getItem('auth_token');
     if (raw) {
       let token = this.parseJwt(raw);
       return token[fieldName];
     }
-    return "";
+    return '';
   }
 
   getCurrentUser(): Promise<any> {
-    let url = "/api/findUser/";
-    return this.http.get(url)
+    let url = '/api/findUser/';
+    return this.http
+      .get(url)
       .toPromise()
-      .catch(error => this.errorHandler(error));
+      .catch((error) => this.errorHandler(error));
   }
 }
 

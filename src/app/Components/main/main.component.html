@@ -40,6 +40,11 @@
           >Posts</a
         >
       </div>
+
+      <div class="navbar-nav ms-auto">
+        <button *ngIf="user.id > 0" class="nav-link" (click)="logout()">Logout</button>
+        <button *ngIf="user.id == 0" class="nav-link" (click)="login()">Login</button>
+      </div>
     </div>
   </div>
 </nav>
