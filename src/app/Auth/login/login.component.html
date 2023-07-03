@@ -1,11 +1,11 @@
 <div class="loginComponent">
-  <div class="boxLogin" fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
-    <form (ngSubmit)="login()" class="login-form" [@shake]="shakeState">
-      <div fxLayout="column" fxLayoutAlign="center center" class="form-group boxImgLogin">
+  <div class="boxLogin" >
+    <form (ngSubmit)="login()" class="login-form">
+      <div class="form-group boxImgLogin">
         <img class="login-logo" />
       </div>
 
-      <div fxLayout="column" class="form-group has-feedback has-feedback-left">
+      <div class="form-group has-feedback has-feedback-left">
         <input
           id="username"
           [(ngModel)]="credentials.username"
@@ -29,8 +29,8 @@
         </div>
       </div>
 
-      <div fxLayout="column" class="form-group has-feedback has-feedback-left">
-        <div fxLayoutWrap>
+      <div  class="form-group has-feedback has-feedback-left">
+        <div>
           <input
             [(ngModel)]="credentials.password"
             #password="ngModel"

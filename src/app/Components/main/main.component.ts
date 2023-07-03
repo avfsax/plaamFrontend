@@ -6,13 +6,15 @@ import { AuthenticationService } from 'src/app/Auth/authentication.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  styleUrls: ['./main.component.less'],
 })
 export class MainComponent implements OnInit {
   userName: string = '';
   user_id: string | undefined;
 
   isAdmin: boolean = false;
+
+  showmenu: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,

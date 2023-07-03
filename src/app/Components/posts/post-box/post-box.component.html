@@ -1,0 +1,16 @@
+<mat-card
+  class="post-card mat-elevation-z0"
+  *ngIf="post.id > 0"
+  (click)="goToPostShow(post)"
+>
+  <mat-card-content>
+    <mat-card-title>{{ post.title | textLong : 100 }}</mat-card-title>
+
+    <p>{{ post.text | textLong }}</p>
+
+    <mat-card-subtitle>
+      {{ post.publishedDate | date : "dd/MM/yyyy hh:mm" }}
+      <span *ngIf="post.author">by {{ post.author.email }}</span>
+    </mat-card-subtitle>
+  </mat-card-content>
+</mat-card>

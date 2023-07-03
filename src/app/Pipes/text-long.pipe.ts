@@ -11,8 +11,8 @@ export class TextLongPipe implements PipeTransform {
 
     if (text.length > max) text = text.slice(0, max) + '...';
 
-    text = text.replace('<p>', '');
-    text = text.replace('</p>', '');
+    text = text.replaceAll('<p>', '');
+    text = text.replaceAll('</p>', '');
 
     return text;
   }

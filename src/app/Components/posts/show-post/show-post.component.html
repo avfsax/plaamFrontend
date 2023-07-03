@@ -1,0 +1,19 @@
+<div class="showPost">
+  <h1 class="titleShow">{{ post.title }}</h1>
+
+  <h4 class="dateShow">
+    {{ post.publishedDate | date : "dd/MM/yyyy hh:mm" }}
+    <span *ngIf="post.author">by {{ post.author.email }}</span>
+  </h4>
+
+  <div [innerHTML]="post.text" class="contentShow"></div>
+
+  <div class="commentsOfPost">
+    <h2 class="commentsTitle">Comentarios: </h2>
+    <p class="notComments" *ngIf="!post.comments">There are currently no comments for this post</p>
+    <div class="commentMessage" *ngFor="let comment of post.comments">
+        <p>{{ comment.message }}</p>
+    </div>
+
+  </div>
+</div>

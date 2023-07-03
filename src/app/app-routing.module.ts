@@ -4,22 +4,31 @@ import { AuthGuardService } from './Auth/auth-guard.service';
 import { MainComponent } from './Components/main/main.component';
 import { NewsComponent } from './Components/news/news-component.component';
 import { ShowNewsComponent } from './Components/news/show-news/show-news.component';
+import { PostsComponent } from './Components/posts/posts.component';
+import { ShowPostComponent } from './Components/posts/show-post/show-post.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    canActivate: [AuthGuardService],
     children: [
-      { path: '', component: NewsComponent, canActivate: [AuthGuardService] },
+      { path: '', component: NewsComponent},
       {
         path: 'news',
         component: NewsComponent,
-        canActivate: [AuthGuardService],
       },
       {
         path: 'news/:id',
         component: ShowNewsComponent,
+      },
+      {
+        path: 'posts',
+        component: PostsComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'posts/:id',
+        component: ShowPostComponent,
         canActivate: [AuthGuardService],
       },
     ],

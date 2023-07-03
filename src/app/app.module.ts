@@ -13,6 +13,9 @@ import { NewsComponent } from './Components/news/news-component.component';
 import { TextLongPipe } from './Pipes/text-long.pipe';
 import { BoxNewsComponent } from './Components/news/box-news/box-news.component';
 import { ShowNewsComponent } from './Components/news/show-news/show-news.component';
+import { PostsComponent } from './Components/posts/posts.component';
+import { PostBoxComponent } from './Components/posts/post-box/post-box.component';
+import { ShowPostComponent } from './Components/posts/show-post/show-post.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { ShowNewsComponent } from './Components/news/show-news/show-news.compone
     TextLongPipe,
     BoxNewsComponent,
     ShowNewsComponent,
+    PostsComponent,
+    PostBoxComponent,
+    ShowPostComponent,
   ],
   imports: [
     BrowserModule,
