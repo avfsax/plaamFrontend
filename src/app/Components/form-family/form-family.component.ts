@@ -95,24 +95,4 @@ export class FormFamilyComponent implements OnInit {
     const films = <FormArray>childs.controls[i].get('films');
     return films;
   }
-
-  // addFilm() {
-  //   this.person.controls.films.push(this.film);
-  // }
-
-  // removeFilm() {
-  //   this.person.controls.films.removeAt(
-  //     this.person.controls.films.controls.length - 1
-  //   );
-  // }
-
-  // addChildren() {
-  //   this.person.controls.childrens.push(this.child);
-  // }
-
-  // removeChildren() {
-  //   this.person.controls.childrens.removeAt(
-  //     this.person.controls.childrens.controls.length - 1
-  //   );
-  // }
 }
