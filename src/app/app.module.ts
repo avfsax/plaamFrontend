@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { PostsComponent } from './Components/posts/posts.component';
 import { PostBoxComponent } from './Components/posts/post-box/post-box.component';
 import { ShowPostComponent } from './Components/posts/show-post/show-post.component';
 import { CreateCommentComponent } from './Components/posts/create-comment/create-comment.component';
+import { FormFamilyComponent } from './Components/form-family/form-family.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { CreateCommentComponent } from './Components/posts/create-comment/create
     PostBoxComponent,
     ShowPostComponent,
     CreateCommentComponent,
+    FormFamilyComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { CreateCommentComponent } from './Components/posts/create-comment/create
     MatDividerModule,
     MatIconModule,
     MatBadgeModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

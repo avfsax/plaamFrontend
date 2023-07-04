@@ -1,0 +1,193 @@
+<div class="row">
+  <div class="col">
+    <form [formGroup]="father">
+      <h2>Father</h2>
+      <mat-card class="form-card">
+        <mat-card-content>
+          <h3>Person data</h3>
+          <div formGroupName="data">
+            <div class="row">
+              <div class="col colField">
+                <mat-form-field>
+                  <mat-label>Name</mat-label>
+                  <input matInput type="text" formControlName="name" />
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Last Name</mat-label>
+                  <input matInput type="text" formControlName="lastname" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <h3>Your films</h3>
+            <button
+              class="btnFormDynamic"
+              mat-raised-button
+              color="accent"
+              (click)="addFilm()"
+            >
+              Add
+            </button>
+            <button
+              class="btnFormDynamic"
+              mat-raised-button
+              color="warn"
+              (click)="removeFilm()"
+            >
+              Remove
+            </button>
+
+            <div
+              formArrayName="films"
+              *ngFor="
+                let films of father.controls.data.controls.films?.controls;
+                let i = index
+              "
+            >
+              <ng-container [formGroupName]="i">
+                <div class="row">
+                  <div class="col colField">
+                    <mat-form-field>
+                      <mat-label>Name</mat-label>
+                      <input matInput type="text" formControlName="name" />
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Director</mat-label>
+                      <input matInput type="text" formControlName="director" />
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>year</mat-label>
+                      <input matInput type="number" formControlName="year" />
+                    </mat-form-field>
+                    <mat-checkbox formControlName="isOscarOwner"
+                      >Oscar winner</mat-checkbox
+                    >
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <!---->
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-divider></mat-divider>
+
+      <h2>Children</h2>
+
+      <button
+        class="btnFormDynamic"
+        mat-raised-button
+        color="accent"
+        (click)="addChild()"
+      >
+        Add
+      </button>
+      <button
+        class="btnFormDynamic"
+        mat-raised-button
+        color="warn"
+        (click)="removeChild()"
+      >
+        Remove
+      </button>
+
+      <mat-card
+        class="form-card"
+        formArrayName="childs"
+        *ngFor="let child of father.controls.childs?.controls; let i = index"
+      >
+        <mat-card-content>
+          <h3>Child {{ i + 1 }}</h3>
+
+          <ng-container [formGroupName]="i">
+            <div class="row">
+              <div class="col colField">
+                <mat-form-field>
+                  <mat-label>Name</mat-label>
+                  <input matInput type="text" formControlName="name" />
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Last Name</mat-label>
+                  <input matInput type="text" formControlName="lastname" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <h3>Films of child {{ i + 1 }}</h3>
+            <div class="row">
+              <div class="col">
+                <button
+                  class="btnFormDynamic"
+                  mat-raised-button
+                  color="accent"
+                  (click)="addFilmInChild(i)"
+                >
+                  Add
+                </button>
+                <button
+                  class="btnFormDynamic"
+                  mat-raised-button
+                  color="warn"
+                  (click)="removeFilmInChild(i)"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+
+            <div
+              formArrayName="films"
+              *ngFor="let films of getFilmsByChild(i).controls; let i = index"
+            >
+              <ng-container [formGroupName]="i">
+                <div class="row">
+                  <div class="col colField">
+                    <mat-form-field>
+                      <mat-label>Name</mat-label>
+                      <input matInput type="text" formControlName="name" />
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Director</mat-label>
+                      <input matInput type="text" formControlName="director" />
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>year</mat-label>
+                      <input matInput type="number" formControlName="year" />
+                    </mat-form-field>
+                    <mat-checkbox formControlName="isOscarOwner"
+                      >Oscar winner</mat-checkbox
+                    >
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <!---->
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </form>
+
+    <mat-divider></mat-divider>
+
+    <h2>Show data of form</h2>
+    <button
+      class="btnFormDynamic"
+      mat-raised-button
+      color="primary"
+      (click)="readForm()"
+    >
+      Read form "console.log()"
+    </button>
+
+    <div class="row showdataOfFormJson">
+      <div class="col">
+        <mat-card>
+          <mat-card-content>
+            <pre>{{ father.value | json }}</pre>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { ShowNewsComponent } from './Components/news/show-news/show-news.compone
 import { PostsComponent } from './Components/posts/posts.component';
 import { ShowPostComponent } from './Components/posts/show-post/show-post.component';
 import { CreateCommentComponent } from './Components/posts/create-comment/create-comment.component';
+import { FormFamilyComponent } from './Components/form-family/form-family.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
       {
         path: 'posts/:id/comments',
         component: CreateCommentComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'form/family',
+        component: FormFamilyComponent,
         canActivate: [AuthGuardService],
       },
     ],
